@@ -1,0 +1,17 @@
+org 00h
+mov r0, #03h
+mov dptr, #4600h
+movx a, @dptr
+l1: mov b, a
+inc dptr
+movx a, @dptr
+cjne a, b, l2
+l2: jnc l3
+mov a, b
+l3: mov r1, a
+djnz r0, l1
+inc dptr
+mov a, r1
+movx @dptr, a
+l4: sjmp l4
+end
